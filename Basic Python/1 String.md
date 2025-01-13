@@ -54,3 +54,25 @@ words_list = ['раз', 'два', 'три', 'четыре', 'пять', 'выш�
 
 new_string = '-'.join(words_list)`
 ```
+
+#### Сырые строки
+
+```python
+import re
+
+raw_string = r"C:\Users\YourName\Documents\file.txt"
+
+pattern = r"\d{3}-\d{2}-\d{4}"  # Шаблон для поиска формата XXX-XX-XXXX
+text = "My number is 123-45-6789."
+match = re.search(pattern, text)
+print(match.group())  # Вывод: 123-45-6789
+```
+
+**Ограничения:**
+Сырые строки не могут заканчиваться на обратный слэш, так как это приведет к синтаксической ошибке.
+```python
+# Ошибка: EOL while scanning string literal
+invalid_raw_string = r"C:\Users\YourName\Documents\"
+
+valid_raw_string = r"C:\Users\YourName\Documents\\" # Два обратных слэша
+```
