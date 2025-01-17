@@ -1,26 +1,104 @@
 **Словарь** — это коллекция, набор элементов, разделённых запятой. Каждый элемент словаря состоит из двух частей, между этими частями ставится двоеточие: первая часть элемента называется **ключ**, вторая часть — **значение**.
 
+❗️**Словарь имеет уникальные ключи**.
+❗️ **C Python 3.7 словарь - упорядоченная коллекция**
+
 **Dict == хэш-таблица**
 
+В качестве **key** можем использовать bool, int, float, str и **tupels**
+
 ```python
-english = {'рука': 'hand', 'нога': 'leg', 'хвост': 'tail',
-		   'питон': 'python', 'бэкенд-разработчик': 'back-end developer'}
+d = {}
+d = dict()
+
+d = dict(one=1, two=2, three='3', four='4')
+# {'one': 1, 'two': 2, 'three': '3', 'four': '4'}
+
+english = {'рука': 'hand',
+		   'нога': 'leg',
+		   'хвост': 'tail',
+		   'питон': 'python',
+		   'бэкенд-разработчик': 'back-end developer'}
 
 english['рука'] # Доступ по ключу
 english['рука'] = 'arm' # Присвоение значения
-english_values_set = english.values() # Извлечение всех ключей
-english_keys_set = english.keys() # Извлечение всех значений
 ```
 Метод values() возвращает **коллекцию** типа dict_values(), а метод keys() — **коллекцию** типа dict_keys(). Это коллекции, похожие на списки; их можно преобразовать в списки или в множества — и работать с ними.
+## True and False, как ключи + float и int 
+
+**❗️Помнить, что `1 == True`, `0 == False`**
+**❗️Помнить, что `1.0 == 1` и т.д.**
+
 ```python
-english_values = list(english_values_set)
-english_keys = list(english_keys_set)
+d = {1: 'one', True: 'Истина', 2.0: 'Float'}
+# {1: 'Истина', 2.0: 'Float'}
+
+d[True] = 'Ложь'
+# {1: 'Ложь', 2.0: 'Float'}
+
+d = {}
+d[True] = 'Истина'
+# {True: 'Истина'}
+
+d = {2: 'two', True: 'Истина', 2.0: 'Float', 'python': 'питон'}
+# {2: 'Float', True: 'Истина', 'python': 'питон'}
 ```
-##### Преобразование словаря в список или сет
+## Методы словарей
+
+```python
+d = {3: 'three', True: 'Истина', 2.0: 'Float', 'python': 'питон'}
+
+del d[True] # {3: 'three', 2.0: 'Float', 'python': 'питон'}
+
+# Проверить существует ли key в словаре
+3 in d # True
+True not in d # True
+
+lst = ['+7', '+6', '+5', '+2']
+d = dict.fromkeys(lst, [])
+# {'+7': [], '+6': [], '+5': [], '+2': []}
+
+d.clear() # {}
+
+d_new = d.copy() # Создает копию словаря
+d_new = dict(d)
+
+d.get('python') # 'питон'
+d.get(3) # 'three'
+
+d.get('такого эл-таа в коллекции нет') is None # True
+d.get('такого эл-таа в коллекции нет', False) # False
+
+d.setdefault(3) # с существующим ключом вернет 'three'
+d.setdefault('new_key') # создаст key с value = None и вернет value
+d.setdefault('default', []) # создаст key с value = []
+
+d.pop(2) # удалит key: value и вернет value = 'Float'
+d.pop('not exists') # KeyError: 'not exists'
+d.pop('not exists', False) # False
+
+d.keys() # dict_keys([3, True, 'python', 'new_key', 'default'])
+d.values() # dict_values(['three', 'Истина', 'питон', 'new value', []])
+d.items()
+# dict_items([(3, 'three'), (True, 'Истина'), ('python', 'питон'), ('new_key', 'new value'), ('default', [])])
+
+d2 = {'default': [1, 2, 3, 4], 'key': 'value'}
+d.update(d2) # обновляет существующие key и добавляет новые key: value
+# {3: 'three', True: 'Истина', 'python': 'питон', 'new_key': 'new value', 'default': [1, 2, 3, 4], 'key': 'value'}
+d3 = {**d, **d2} # эквивалентно .update()
+d3 = d | d2 # эквивалентно {**d, **d2}
+
+```
+## Преобразование
 Преобразовать в множество или в список можно не только коллекцию ключей или значений словаря, но и словарь целиком:
 - функция `set(имя_словаря)` преобразует словарь в множество;
 - функция `list(имя_словаря)` превратит словарь в список. Но в таких преобразованиях есть особенность: множество или список, которые получатся в результате, будут включать только ключи словаря, а значения будут проигнорированы.
-##### Добавление элементов в словарь
+```python
+english_lst = [['рука', 'hand'], ['нога', 'leg'], ['хвост', 'tail']]
+english_dict = dict(english_lst)
+# {'рука': 'hand', 'нога': 'leg', 'хвост': 'tail'}
+```
+## Добавление элементов в словарь
 ```python
 # Создаём новый элемент словаря через доступ по ключу.
 english['голова'] = 'head'
@@ -28,7 +106,7 @@ english['голова'] = 'head'
 new_words = {'мозг': 'brain', 'логика': 'logic'} 
 english.update(new_words)
 ```
-##### Перебор в цикле `for ... in`
+## Перебор в цикле `for ... in`
 ```python
 favorite_songs = {'Тополиный пух': 'Иванушки international',
 				  'Город золотой': 'Аквариум',
@@ -53,7 +131,7 @@ for singer in favorite_songs.values():
 for music in favorite_songs.keys():
 	print(music)
 ```
-##### Операции с коллекциями
+## Операции с коллекциями
 ```python
 # Список (list): в квадратных скобках:
 sleep_list = ['спать', 'дрыхнуть', 'кемарить', 'спать' ]

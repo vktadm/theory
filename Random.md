@@ -22,4 +22,6 @@ rd.shuffle(numbers)
 
 # возвращает случайный элемент списка
 random_number = rd.choice(numbers)
+
+
 ```

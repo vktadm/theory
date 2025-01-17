@@ -1,3 +1,16 @@
+Список - упорядоченная коллекция. Мутабельный тип данных.
+```python
+lst = []
+lst = list()
+
+new_lst = lst[:] # Копия списка, разные id
+lst = list([True, False]) # Создаст новый список, независимый от изночального
+lst = [True, False]
+new_lst = list(lst)
+
+list('python') # ['p', 'y', 't', 'h', 'o', 'n']
+
+```
 ##### Объединение списков
 ```python
 genres = ['Драмма', 'Ужасы', 'Триллер', 'Комедия']
@@ -31,11 +44,23 @@ genres.insert(1, 'Мелодрамма') # Добовление элемента
 ##### Удаление элемента `del name_list[index], .pop(), .remove()`
 ```python
 del genres[3] # Удаление элемента с определенным индексом
+genres.clear() # Очистка всего списка
+
 popped_genres = genres.pop() # Удаление последнего элемента с возможностью сохранить значени 
 popped_genres1 = genres.pop(0)
+
 genres.remove('Ужасы') # Удаление по значению (только первое вхождение)
+lst = [1, 'string', 0, False, 23, True]
+lst.remove(True) # Удалит 1, тк приведет "1" к bool
+lst.remove(False) # Удалит 0
+lst.remove('no exists') # ValueError: list.remove(x): x not in list
 ```
-##### Сортировка `.sort(), sorted(), reverse()`
+##### Сортировка `.sort(obj, key, reverse), sorted(obj, key, reverse), reverse()`
+
+**reverse** ‒ если True, отсортированный список переворачивается (или сортируется в порядке убывания). 
+**key** ‒ функция, которая служит ключом для сравнения сортировок.  
+
+
 ```python
 firs_names = ['Катя', 'Маша', 'Ваня', 'Кирилл', 'Анна']
 
@@ -45,6 +70,13 @@ firs_names.sort(reverse=True) # Сортировка в обратном пор�
 new_sorted_list = sorted(firs_names) # Сортировка без изменения оригинального списка
 
 cheer_clubs = ['wave', 'no limit', 'zoom', 'abceer', 'victory'] cheer_clubs.reverse() # Изменения порядка на обратный, без сортировки
+
+# key
+numbers = [12, 123, 1234, 1, 12345, 11, 111, 22222]
+string_list = list(map(str, numbers))
+
+string_list.sort(key=len) # ['1', '12', '11', '123', '111', '1234', '12345', '22222']
+
 ```
 ##### Перебор элементов списка
 ```python
@@ -54,15 +86,29 @@ for cheer_club in cheer_clubs:
 ```
 ##### Копирование списка
 ```python
+new_smartphones = smartphones.copy() # Копирование списка
 new_smartphones = smartphones[:] # Копирование списка
-same_smartphones = smartphones # Связывает новую переменную с существующем списком`
+same_smartphones = smartphones # Связывает новую переменную с существующем списком
 ```
 ##### Сегменты (slices)
 ```python
-smartphones = ['samsung', 'apple', 'nokia', 'xiaomi', 'zte']
+smartphones = ['samsung', 'apple', 'nokia', 'xiaomi', 'zte', 'redmi']
 
 smartphones[0:3] 
-sorted_smartphones[1::2] # вывод через один элемент
-sorted_smartphones[:5:3] 
-sorted_smartphones[-5::3]
+smartphones[1::2] # вывод через один элемент
+smartphones[:5:3] 
+smartphones[-5::3]
+
+smartphones[:2:-1] # ['redmi', 'zte', 'xiaomi']
+```
+
+##### Подсчет элесентов `.count(value, start, end), index(value, start, end)`
+
+```python
+smartphones = ['samsung', 'apple', 'nokia', 'nokia', 'xiaomi', 'zte', 'redmi', 'samsung', 'apple']
+
+smartphones.count('samsung') # 2
+smartphones.index('apple') # 1 (первое вхождение)
+smartphones.index('apple', 2, -1) # ValueError: 'apple' is not in list
+smartphones.index('apple', 2) # 8
 ```
