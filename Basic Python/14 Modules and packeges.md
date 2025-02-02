@@ -16,4 +16,6 @@ pip freeze > requerements.txt # сохранение всех установле
 
 ```python
 from courses import NAME, python
+
+from .php import *  # импортируются все функции, указанные в __all__
 ```

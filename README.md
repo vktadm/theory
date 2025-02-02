@@ -2,9 +2,7 @@
 ***
 - [ ] Основы программирования С/С++ (СПбГУАП)
 - [ ] Основы программирования Python (Мэтиз Эрик "Изучаем Python: программирование игр, визуализация данных, веб-приложения")
-- [ ] Основы программирования Python (Яндекс.Практикум)
-- [ ] [Объектно-ориентированное программирование](https://stepik.org/course/116336/info)
-- [ ] Функциональное программирование (статьи habr / youtube и т.д.)
+- [ ] Основы программирования Python - курсы на Stepik ([Добрый, добрый Python](https://stepik.org/course/100707/syllabus)) ([Добрый, добрый Python. ООП](https://stepik.org/course/116336/syllabus))
 - [ ] [Алгоритмы Python](https://stepik.org/course/57382/info)
 - [ ]  БД и SQL
 	- [ ] Реляционные базы данных (SQlite, MySQL, PostgreSQL)
@@ -12,13 +10,9 @@
 	- [ ] SQLAlchemy ORM
 - [ ] Django (Мэтиз Эрик, статьи habr / youtube и т.д.)
 - [ ] Flask (Мигель Гринберг "Мега-Учебник Flask")
-- [ ] [Регулярные выражения](https://stepik.org/course/107335/info)
 - [ ] Tg-боты
 	- [ ] Aiogram
 	- [ ] Telebot
 - [ ] BeautifulSoup
 - [ ] Unittest
 - [ ] Asyncio
-- [ ] Анализ данных (поверностно)
-	- [ ] Pandas 
-	- [ ] Numpy
