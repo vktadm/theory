@@ -75,7 +75,7 @@ s.rfind('ra') # 9
 ##### `.index(sub, start, end)`
 
 Идентичен find, но возвращает error если не найдет подстроку в строке.
-##### `.replase(old, new, count)`
+##### `.replace(old, new, count)`
 
 count - максимальное кол-во замен. Если count = -1, то заменяет все вхождения подстрки
 ```python

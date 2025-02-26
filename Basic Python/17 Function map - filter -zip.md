@@ -54,3 +54,29 @@ print(*filter(str.isalpha, cities))
 ## `zip(iter1 [, iter2 [, iter3]...])`
 
 Для указанных итерируемых объектов выполняет перебор соответствующих значений коллекций, и продолжает работу до тех пор, пока не дойдет до конца самой короткой коллекции.
+
+```python
+a = [i for i in range(10)]
+b = [i for i in range(8)]
+s = 'python'
+
+z = zip(a, b, s) # <zip object at 0x1065eea40>
+
+next(z) # (0, 0, 'p')
+next(z) # (1, 1, 'y')
+print(*z) # (2, 2, 't'), (3, 3, 'h'), (4, 4, 'o'), (5, 5, 'n')
+```
+
+```python
+a = [i for i in range(1, 5)]  
+b = [i for i in range(5, 11)]  
+s = 'python'  
+  
+z = zip(a, b, s)  
+t1, t2, t3 = zip(*z)
+print(t1, t2, t3, sep='\n')
+
+# (1, 2, 3, 4)
+# (5, 6, 7, 8)
+# ('p', 'y', 't', 'h')
+```

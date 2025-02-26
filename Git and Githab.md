@@ -85,7 +85,10 @@ $ git commit -m "Исправить #334, добавить график темп
  *** TODO
 ### Изменения в коммитах
 
-`$ git commit --amend --no-edit # дополнить коммит новыми файлами git restore --staged . # «сбросить» все файлы из staged обратно в untracked/modified $ git commit --amend -m "Новое сообщение" # изменить сообщение последнего коммита git reset --hard <commit hash> # «откатить» коммит`
+```$ git commit --amend --no-edit # дополнить коммит новыми файлами 
+git restore --staged . # «сбросить» все файлы из staged обратно в untracked/modified 
+$ git commit --amend -m "Новое сообщение" # изменить сообщение последнего коммита git reset --hard <commit hash> # «откатить» коммит
+```
 
 #### Будьте осторожны с командой git reset --hard! При удалении коммитов можно потерять что-то нужное.
 
